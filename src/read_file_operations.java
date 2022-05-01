@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.Scanner;
 
-public class file_operations {
+public class read_file_operations {
     static File check_file_exists(String filename, String... args) {
         // To read argument which is list of strings [Not used in this use case]
         for (String arg : args) {

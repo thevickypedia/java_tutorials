@@ -1,3 +1,4 @@
 .idea
 out
-src/data.txt
+data.txt
+filename.txt
