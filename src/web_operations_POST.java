@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -31,6 +33,16 @@ public class web_operations_POST {
             OutputStream stream = connection.getOutputStream();
             stream.write(out);
             System.out.println(connection.getResponseCode() + " " + connection.getResponseMessage());
+            if (connection.getResponseCode() == 200) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuilder stringify = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    stringify.append(line);
+                }
+                connection.disconnect();
+                return stringify.toString();
+            }
             connection.disconnect();
         } catch (ConnectException | UnknownHostException | HttpRetryException | MalformedURLException error) {
             System.out.println(error.getClass());
