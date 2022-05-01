@@ -21,9 +21,9 @@ public class write_file_operations {
 
     public static void write_data(String filename, String data) {
         try {
-            FileWriter myWriter = new FileWriter(filename);
-            myWriter.write(data);
-            myWriter.close();
+            FileWriter writer = new FileWriter(filename);
+            writer.write(data);
+            writer.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
