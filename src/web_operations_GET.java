@@ -7,6 +7,14 @@ public class web_operations_GET {
         try {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
+            var HTTP_PROXY = System.getenv("HTTP_PROXY");
+            var HTTPS_PROXY = System.getenv("HTTPS_PROXY");
+            if (HTTP_PROXY != null) {
+                connection.setRequestProperty("HTTP_PROXY", HTTP_PROXY);
+            }
+            if (HTTPS_PROXY != null) {
+                connection.setRequestProperty("HTTPS_PROXY", HTTPS_PROXY);
+            }
             var ok = connection.getResponseCode();
             if (ok >= 200 && ok <= 302) {
                 StringBuilder result = new StringBuilder();

@@ -24,6 +24,14 @@ public class web_operations_POST {
             URL url = new URL(url_env + "/offline-communicator");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
+            var HTTP_PROXY = System.getenv("HTTP_PROXY");
+            var HTTPS_PROXY = System.getenv("HTTPS_PROXY");
+            if (HTTP_PROXY != null) {
+                connection.setRequestProperty("HTTP_PROXY", HTTP_PROXY);
+            }
+            if (HTTPS_PROXY != null) {
+                connection.setRequestProperty("HTTPS_PROXY", HTTPS_PROXY);
+            }
             connection.setRequestProperty("Authorization", "Bearer " + token);
             connection.setRequestProperty("accept", "application/json");
             connection.setRequestProperty("Content-Type", "application/json");
