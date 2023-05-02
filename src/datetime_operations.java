@@ -14,9 +14,9 @@ public class datetime_operations {
         DateTimeFormatter dtf = getFormat();
         LocalDateTime now = getDate();
         System.out.println("Current time: " + dtf.format(now));
-        LocalDate date_300_earlier = LocalDate.now().plusYears(1);
+        LocalDate date_300_earlier = LocalDate.now().minusYears(1);
         System.out.println("Date before a year: " + date_300_earlier);
-        LocalDate date_300_later = LocalDate.now().minusYears(1);
+        LocalDate date_300_later = LocalDate.now().plusYears(1);
         System.out.println("Date after a year: " + date_300_later);
     }
 }
