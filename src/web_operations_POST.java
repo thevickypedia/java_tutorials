@@ -12,6 +12,8 @@ public class web_operations_POST {
             connection.setRequestMethod("GET");
             if (connection.getResponseCode() == 200) {
                 return true;
+            } else {
+                System.out.println(connection.getResponseCode() + " - " + connection.getResponseMessage());
             }
         } catch (UnknownHostException | HttpRetryException | SocketException error) {
             System.out.println(error.getClass());
@@ -33,7 +35,6 @@ public class web_operations_POST {
                 connection.setRequestProperty("HTTPS_PROXY", HTTPS_PROXY);
             }
             connection.setRequestProperty("Authorization", "Bearer " + token);
-            connection.setRequestProperty("accept", "application/json");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setDoOutput(true);
             String data = "{\n  \"command\": \"turn off kitchen lights\"\n}";

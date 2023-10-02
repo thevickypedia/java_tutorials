@@ -1,4 +1,6 @@
-.idea
-out
+.idea/
+output/
+lib/
+pom.xml
 data.txt
 filename.txt
